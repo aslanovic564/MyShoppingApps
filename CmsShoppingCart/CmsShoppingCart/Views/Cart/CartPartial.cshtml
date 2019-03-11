@@ -1,0 +1,7 @@
+﻿@model CmsShoppingCart.Models.ViewModels.Cart.CartVM
+
+<div class="ajaxcart" style="color:white;">
+    Your cart:@Model.Quantity mehsul- @Model.Price -AZN
+   <br/>
+    @Html.ActionLink("Checkout","Index")
+</div>

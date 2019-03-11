@@ -1,0 +1,60 @@
+﻿@model IEnumerable<CmsShoppingCart.Areas.Admin.Models.Shop.OrdersForAdmin>
+
+@{
+    ViewBag.Title = "Orders";
+}
+
+<h2>Orders</h2>
+
+@if (!Model.Any())
+{
+    <h1 class="text-center">There are not page!!!!!!</h1>
+}
+else
+{
+    <table class="table">
+        <tr>
+            <th>
+                Order Number
+            </th>
+            <th>
+                Username
+            </th>
+            <th>
+                Order Detalis
+            </th>
+            <th>
+                CreatedAt
+            </th>
+            <th>
+                Total
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Username)
+            </td>
+
+            <td>
+                @foreach (var item2 in item.ProductsAndQty)
+                {
+                    @item2.Key @:x @item2.Value<br />
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedAt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Total)
+            </td>
+        </tr>
+        }
+
+    </table>
+}
